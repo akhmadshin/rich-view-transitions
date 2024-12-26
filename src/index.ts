@@ -76,7 +76,6 @@ export const handleRouteChangeComplete = (_key?: string) => {
   } else {
     handleLinkNavigationComplete(backRouterKey);
   }
-
 }
 
 const handleHistoryNavigationComplete = (selector: string) => {
@@ -93,6 +92,7 @@ const handleLinkNavigationComplete = (backRouterKey: string) => {
   transitionEndAttributeName = undefined;
 
   if (transitionElement) {
+    cleanUpTransition();
     const transitionElementSelector = getElementSelector(transitionElement) || '';
     transitionElement.style.viewTransitionName = VIEW_TRANSITION_NAME;
     sessionStorage.setItem(`__VTH_view_transition_element_selector_${backRouterKey}`, transitionElementSelector);
